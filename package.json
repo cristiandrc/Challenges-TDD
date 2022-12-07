@@ -6,7 +6,8 @@
   "scripts": {
     "tsc": "tsc",
     "test": "jest",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "test:coverage": "jest --coverage"
   },
   "keywords": [
     "TypeScript",
