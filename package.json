@@ -1,0 +1,19 @@
+{
+  "name": "challenge-tdd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tsc":"tsc",
+    "test": "jest"
+  },
+  "keywords": [
+    "TypeScript",
+    "Jest"
+  ],
+  "author": "Cristian Rojas <cristian.rojas.d@outlook.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.9.3"
+  }
+}
