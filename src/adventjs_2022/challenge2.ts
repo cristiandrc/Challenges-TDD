@@ -20,7 +20,7 @@
 // Aunque el 31 de diciembre sea festivo, las horas extra se harán el mismo año y no el siguiente.
 // El método Date.getDay() te devuelve el día de la semana de una fecha. El 0 es domingo, el 1 es lunes, etc.
 
-export const countHours = (year: number, holidays: string[]) => {
+export const countHours = (year: number, holidays: string[]): number => {
   let hoursExt = 0
 
   holidays.forEach((e) => {
