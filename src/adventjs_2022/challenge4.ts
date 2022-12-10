@@ -38,6 +38,24 @@
 // Las cajas pueden venir desordenadas de tamaño.
 // Las cajas no son siempre cuadradas, pueden ser rectangulares.
 
-export function fitsInOneBox(boxes: []) {
-  return boxes
+interface boxesType {
+  l: number
+  w: number
+  h: number
+}
+export function fitsInOneBox(boxes: boxesType[]): boolean {
+  let isTrue = true
+  boxes.sort((a, b) => {
+    if (a.h < b.h && a.l < b.l && a.w < b.w) {
+      return -1
+    }
+
+    if (a.h > b.h && a.l > b.l && a.w > b.w) {
+      return 1
+    }
+
+    isTrue = false
+    return 0
+  })
+  return isTrue
 }
