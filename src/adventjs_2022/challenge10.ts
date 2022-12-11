@@ -31,33 +31,48 @@
 // A tener en cuenta
 // Para que el salto sea válido tiene que subir una vez y bajar una vez. Si durante el salto se queda en la misma altura entre dos posiciones, la parabola continua.
 // No hace falta que el punto de inicio y final sean el mismo (las ciudades pueden estar a diferentes alturas).
+enum Status {
+  Initial = 'initial',
+  Up = 'up',
+  Down = 'down',
+}
+
+type validationType = {
+  status: Status
+  up: number
+  down: number
+}
 
 export function checkJump(heights: number[]): boolean {
-  let result = false;
-  let isUp = true
-  let isUp2 = false
+  const validation: validationType = {
+    status: Status.Initial,
+    up: 0,
+    down: 0
+  }
 
   heights.reduce((a, c, i) => {
-
-    if (a === c || i === 0) {
+    if (i === 0 || a === c) {
       return c
     }
-
     if (a < c) {
-      if (result) {
-        isUp = false
-        result = false
+      if (validation.status != Status.Up) {
+        validation.up += 1
+        validation.status = Status.Up
       }
-      isUp2 = true
       return c
     }
 
-    if (a > c && isUp && isUp2) {
-      result = true
+    if (a > c) {
+      if (validation.status != Status.Down) {
+        validation.down += 1
+        validation.status = Status.Down
+      }
       return c
     }
+
     return c
   }, 0)
 
-  return result
+
+  return (validation.up === 1 && validation.down === 1) ? true : false
 }
