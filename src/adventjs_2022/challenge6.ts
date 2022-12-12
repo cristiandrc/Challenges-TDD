@@ -32,5 +32,23 @@
 // Basado en esta kata de Codewars
 
 export function createCube(size: number) {
-  return size
+  let upCube = ''
+  let bottomCube = ''
+
+  for (let i = 1; i <= size; i++) {
+    if (i !== size) {
+      upCube = upCube + ' '.repeat(size - i)
+    }
+    if (i !== 1) {
+      bottomCube = bottomCube + ' '.repeat(i - 1)
+    }
+
+    upCube = upCube + '/\\'.repeat(i) + '_\\'.repeat(size) + '\n'
+    bottomCube = bottomCube + '\\/'.repeat(size + 1 - i) + '_/'.repeat(size)
+
+    if (i !== size) {
+      bottomCube = bottomCube + '\n'
+    }
+  }
+  return upCube + bottomCube
 }
