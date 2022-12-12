@@ -36,5 +36,18 @@
 // El número de maxCities puede ser mayor a giftsCities.length
 
 export function getMaxGifts(giftsCities: number[], maxGifts: number, maxCities: number) {
-  return { giftsCities, maxGifts, maxCities }
+  const cobinaciones = giftsCities.reduce<number[][]>((a, c) => a.concat((a.map(d => [c].concat(d)))), [[]])
+
+  let result: number = cobinaciones
+    .filter((e) => e.length <= maxCities)
+    .map((e) => e.reduce((a, c) => a + c, 0))
+    .reduce((a, c) => {
+      if (c <= maxGifts && c > a) {
+        return c
+      } else {
+        return a
+      }
+    }, 0)
+
+  return result
 }
