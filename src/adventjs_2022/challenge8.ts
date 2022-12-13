@@ -17,5 +17,22 @@
 // // "midu" no puede ser un palíndromo después de eliminar un carácter
 
 export function checkPart(part: string) {
-  return part
+
+  let reversePart = part.split('').reverse().join('')
+  if (part === reversePart) {
+    return true
+  }
+
+  for (let i = 0; i < part.length; i++) {
+    let partArray = part.split('')
+    partArray.splice(i, 1, '')
+
+    let miniPart = partArray.join('')
+    let miniReversePart = partArray.reverse().join('')
+
+    if (miniPart === miniReversePart) {
+      return true
+    }
+  }
+  return false
 }
