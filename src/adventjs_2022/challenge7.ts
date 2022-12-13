@@ -26,5 +26,17 @@
 // Si hay más de un regalo que reponer, la función debe devolver un Array con todos los regalos que hay que reponer.
 
 export function getGiftsToRefill(a1: string[], a2: string[], a3: string[]) {
-  return [a1, a2, a3]
+
+  const a1Filter = a1
+    .filter((e) => !(a2.includes(e)) && !(a3.includes(e)))
+
+  const a2Filter = a2
+    .filter((e) => !(a1.includes(e)) && !(a3.includes(e)))
+
+  const a3Filter = a3
+    .filter((e) => !(a1.includes(e)) && !(a2.includes(e)))
+
+  const result = [...a1Filter, ...a2Filter, ...a3Filter].filter((e, i, a) => a.indexOf(e) === i)
+
+  return result
 }
