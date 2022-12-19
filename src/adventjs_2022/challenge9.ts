@@ -35,5 +35,18 @@
 // Si todos los leds están encendidos, el tiempo es 0.
 
 export function countTime(leds: number[]) {
-  return leds
+  let count = 0
+
+  while (leds.includes(0)) {
+    count += 1
+
+    leds = leds.map((e, i) => {
+      if (e === 0 && leds.at(i - 1)) {
+        return 1
+      }
+      return e
+    })
+  }
+
+  return count * 7
 }
